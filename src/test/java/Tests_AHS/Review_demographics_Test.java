@@ -46,19 +46,18 @@ public class Review_demographics_Test extends BaseTest {
 	@Description("Validating with invalid test data")
 	public void TestwithNegativescenario() throws InterruptedException, IOException {
 
-		//https://github.com/narendrak12345/AHS_automation.git
-		//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
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		demo.clickOnDemo();
-		String actual1=demo.Verifstreet();
-		Assert.assertEquals(actual1,"Please Enter Street Address.");
-        String actual2=demo.Verifcity();
-		Assert.assertEquals(actual2,"Please Enter City.");
-		String actual3=demo.Verifyzip();
-		Assert.assertEquals(actual3,"Please Enter zip code.");
-		String actual4=demo.Verifycellularphone();
-		Assert.assertEquals(actual4,"Cellular Phone must be at least 10 digits long.");
+		String actual1 = demo.Verifstreet();
+		Assert.assertEquals(actual1, "Please Enter Street Address.");
+		String actual2 = demo.Verifcity();
+		Assert.assertEquals(actual2, "Please Enter City.");
+		String actual3 = demo.Verifyzip();
+		Assert.assertEquals(actual3, "Please Enter zip code.");
+		String actual4 = demo.Verifycellularphone();
+		Assert.assertEquals(actual4, "Cellular Phone must be at least 10 digits long.");
 	}
+
 	@Step("Closing the application")
 	@AfterMethod
 	public void teardown() {
