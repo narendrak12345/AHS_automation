@@ -21,43 +21,41 @@ public class BaseTest {
 	public static Properties prop;
 	public static FileInputStream fis;
 	public static FileInputStream fis1;
-	
-	
-	public static Logger log=LogManager.getLogger(BaseTest.class);
-	public BaseTest() throws IOException{
-		
-		
+
+	public static Logger log = LogManager.getLogger(BaseTest.class);
+
+	public BaseTest() throws IOException {
+
 		prop = new Properties();
-		String home=System.getProperty("user.dir");
-		//System.out.println(home);
-		fis = new FileInputStream(home+"\\src\\main\\resources\\Properties\\Testdata.properties");
+		String home = System.getProperty("user.dir");
+		// System.out.println(home);
+		fis = new FileInputStream(home + "\\src\\main\\resources\\Properties\\Testdata.properties");
 		prop.load(fis);
-		fis1=new FileInputStream(home+"\\src\\main\\resources\\logs\\log4j2.properties");
+		fis1 = new FileInputStream(home + "\\src\\main\\resources\\logs\\log4j2.properties");
 		prop.load(fis);
-		log.info("Loading files");
+		//log.info("Loading files");
 	}
+
 	public void init() {
-		
+
 		WebDriverManager.chromedriver().setup();
-		String browser=prop.getProperty("browser");
-		log.info("Current browser is " +browser);
-		
-		if(browser.equals("chrome")) {
+		String browser = prop.getProperty("browser");
+		log.info("Current browser is " + browser);
+
+		if (browser.equals("chrome")) {
 			driver = new ChromeDriver();
 			log.info("Selecting chrome browser");
-		}
-		else if(browser.equals("Firefox")) {
-			driver=new FirefoxDriver();
+		} else if (browser.equals("Firefox")) {
+			driver = new FirefoxDriver();
 			log.info("Selecting Firefox browser");
-		}
-		else if(browser.equals("IE")) {
-			driver=new InternetExplorerDriver();
+		} else if (browser.equals("IE")) {
+			driver = new InternetExplorerDriver();
 			log.info("Selecting IE browser");
 		}
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 		log.info("Opening URL");
-        driver.get(prop.getProperty("URL"));
+		driver.get(prop.getProperty("URL"));
 	}
 }

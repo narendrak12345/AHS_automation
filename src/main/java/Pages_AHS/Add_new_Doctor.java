@@ -42,32 +42,87 @@ public class Add_new_Doctor extends BaseTest{
 	@FindBy(xpath="//button[@name='addBtn']")
 	WebElement choosepysicianbtn;
 	
+	@FindBy(xpath="//*[text()=' Save ']")
+	WebElement Clickonsave;
+	
+	@FindBy(xpath="//*[text()='OK']")
+	WebElement ClickonOK;
+	
+	@FindBy(xpath="//*[text()=' Home Page']")
+	WebElement ClickonHomepage;
+	
+	
+	@FindBy(xpath="//*[text()='Your Doctor List ']")
+	WebElement Clickonyourdoctorlist;
 
+	
+	@FindAll({@FindBy(xpath="//*[@id='DataTables_Table_0']/tbody/tr[*]/td[3]")})
+	List<WebElement> Getphysiciannames;
+	
 
 	public Add_new_Doctor(WebDriver driver) throws IOException{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void Searchdoctor(String search,int k) throws InterruptedException, IOException {
+	public void SelectDoctor(String search,int k) throws InterruptedException, IOException {
 		
-		Addnewpysician.click();
+		Helper help=new Helper();
+		help.ClickAndWait(Addnewpysician,driver);
 		Searchdoctor.sendKeys(search);
 		Clickonsearch.click();
 		Thread.sleep(2000);
-		Helper help=new Helper();
 		help.ClickOnbtn(5);
 		help.ClickOnbtn(4);
+		Clickonsave.click();
+		help.ClickAndWait(ClickonOK, driver);
 		Thread.sleep(2000);
 		help.Scrolldropdwon(Alloptions,k,driver);
 	}	
-	
 	public void choosephysicians(int k) throws InterruptedException, IOException {
 		
 		Helper help=new Helper();
 		choosepysicianbtn.isEnabled();
 		help.Scrolldropdwon1(choosephysician,k,driver);
 		choosepysicianbtn.click();
-		Thread.sleep(4000);	
+		Clickonsave.click();
+		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK, driver);
+		Thread.sleep(5000);
+		ClickonHomepage.click();
+		Thread.sleep(5000);
+		help.ClickAndWait(ClickonOK, driver);
 	}
+	public void GetalllistofPysiciannames() throws IOException, InterruptedException {
+		
+		Helper help=new Helper();
+		Clickonyourdoctorlist.click();
+		Thread.sleep(5000);
+		help.GetList(Getphysiciannames, driver);
+	}
+	public void ValidateNegativescenario(String search,int k) throws IOException, InterruptedException {
+		Helper help=new Helper();
+		SelectDoctor(search,k);
+		choosepysicianbtn.click();
+		help.ClickOnbtn(2);//select all
+		Thread.sleep(2000);
+		help.ClickOnbtn(3);//unselect all
+		Thread.sleep(2000);
+		choosepysicianbtn.isEnabled();
+		Thread.sleep(2000);
+		help.ClickOnbtn(2);
+		choosepysicianbtn.click();
+		Thread.sleep(2000);
+		help.ClickOnbtn(5);
+		help.ClickOnbtn(6);
+		help.ClickOnbtn(4);
+		help.ClickOnbtn(5);
+		help.ClickOnbtn(4);
+		Thread.sleep(2000);
+	}
+	
+	public void VerifyAddedPhysicians() throws IOException {
+		Helper help=new Helper();
+	}
+	
 }

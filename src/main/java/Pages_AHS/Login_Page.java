@@ -10,71 +10,68 @@ import org.openqa.selenium.support.PageFactory;
 import Generic.Helper;
 import MainBase.BaseTest;
 
-public class Login_Page extends BaseTest{
-	
-	
-	Helper help=new Helper();
-	
-	
-	
-	@FindBy(xpath="//input[@id='email']")
-	
+public class Login_Page extends BaseTest {
+
+	Helper help = new Helper();
+	@FindBy(xpath = "//input[@id='email']")
+
 	WebElement email;
-	
-    @FindBy(xpath="//input[@id='password']")
-	
+
+	@FindBy(xpath = "//input[@id='password']")
+
 	WebElement password;
 
-    @FindBy(xpath="//button[@type='submit']")
-	
+	@FindBy(xpath = "//button[@type='submit']")
+
 	WebElement loginbtn;
-    
-   @FindBy(xpath="//input[@id='otp']")
-	
+
+	@FindBy(xpath = "//input[@id='otp']")
+
 	WebElement otp;
 
-   @FindBy(xpath="//button[@type='submit']")
-   WebElement verifybtn;
-	
-   @FindBy(xpath="//h5[normalize-space()='Review Demographics']")
-   WebElement CheckReviewdemograph;
-   
-   @FindBy(xpath="//div[text()=' Invalid username or password ']")
-   
-   WebElement validateinvalid;
-   
-   @FindBy(xpath="//iframe[@name='a-odj8dgex1c4h']")
-   WebElement Captcha;
-	
+	@FindBy(xpath = "//button[@type='submit']")
+	WebElement verifybtn;
 
-	
-	public Login_Page(WebDriver driver) throws IOException{
-		this.driver=driver;
+	@FindBy(xpath = "//h5[normalize-space()='Review Demographics']")
+	WebElement CheckReviewdemograph;
+
+	@FindBy(xpath = "//div[text()=' Invalid username or password ']")
+
+	WebElement validateinvalid;
+
+	@FindBy(xpath = "//iframe[@name='a-odj8dgex1c4h']")
+	WebElement Captcha;
+
+	public Login_Page(WebDriver driver) throws IOException {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	public void checklogin(String emailid,String pass,String otpp) throws InterruptedException {
-		
+
+	public void checklogin(String emailid, String pass, String otpp) throws InterruptedException {
+
 		email.sendKeys(emailid);
 		password.sendKeys(pass);
-		//help.Switchframe(Captcha,driver);
-		//Captcha.click();
+		// help.Switchframe(Captcha,driver);
+		// Captcha.click();
 		loginbtn.click();
 		otp.sendKeys(otpp);
 		verifybtn.click();
 	}
-public void checkloginIncorrectcrdentials(String emailid,String pass) throws InterruptedException {
-		
+
+	public void checkloginIncorrectcrdentials(String emailid, String pass) throws InterruptedException {
+
 		email.sendKeys(emailid);
 		password.sendKeys(pass);
 		loginbtn.click();
 	}
+
 	public String verify() {
-		
-		return help.ChecklElementAndGettext(CheckReviewdemograph,driver);
+
+		return help.ChecklElementAndGettext(CheckReviewdemograph, driver);
 	}
-public String VerifyInvalidcredentials() {
-		
-		return help.ChecklElementAndGettext(validateinvalid,driver);
+
+	public String VerifyInvalidcredentials() {
+
+		return help.ChecklElementAndGettext(validateinvalid, driver);
 	}
 }
