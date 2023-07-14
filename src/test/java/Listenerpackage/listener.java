@@ -20,12 +20,12 @@ public class listener implements ITestListener {
 
 	// public WebDriver driver;
 	public void onTestStart(ITestResult result) {
-		System.out.println("Test started- " + result.getName());
+		System.out.println("************Test started*************" + result.getName());
 
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		System.out.println("Test completed successfully- " + result.getName());
+		System.out.println("********Test completed successfull*******" + result.getName());
 
 	}
 
