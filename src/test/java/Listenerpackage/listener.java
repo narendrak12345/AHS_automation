@@ -20,7 +20,7 @@ public class listener implements ITestListener {
 
 	// public WebDriver driver;
 	public void onTestStart(ITestResult result) {
-		System.out.println("************Test started*************" + result.getName());
+		System.out.println("***********"+ result.getName()+ " "+ "##started## **************");
 
 	}
 
