@@ -1,5 +1,4 @@
-# AHS_automation
-Automation
+
 Automation framework created by folllowing:
 
 Selenium with java and used Page object model design pattern and To write test scripts used TestNG
