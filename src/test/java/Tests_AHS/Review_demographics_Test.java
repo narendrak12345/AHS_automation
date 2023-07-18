@@ -35,7 +35,7 @@ public class Review_demographics_Test extends BaseTest {
 	}
 
 	@Test
-	@Description("Fielda are not updating,simply clicking on Active button")
+	@Description("Fields are not updating,simply clicking on Active button")
 	public void Updateexistprofile() throws InterruptedException, IOException {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
