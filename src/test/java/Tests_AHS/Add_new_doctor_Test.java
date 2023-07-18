@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import MainBase.BaseTest;
@@ -13,6 +14,7 @@ import Pages_AHS.Login_Page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
+@Listeners(Listenerpackage.listener.class)
 public class Add_new_doctor_Test extends BaseTest {
 
 	public Add_new_Doctor newdoctor;

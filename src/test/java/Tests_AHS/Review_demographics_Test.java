@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import MainBase.BaseTest;
@@ -16,6 +17,7 @@ import Pages_AHS.Review_demographics_Page;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
+@Listeners(Listenerpackage.listener.class)
 public class Review_demographics_Test extends BaseTest {
 
 	public Login_Page login;
@@ -33,7 +35,7 @@ public class Review_demographics_Test extends BaseTest {
 	}
 
 	@Test
-	@Description("Fielda are not updating,simply clicking on Active button")
+	@Description("Fields are not updating,simply clicking on Active button")
 	public void Updateexistprofile() throws InterruptedException, IOException {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
