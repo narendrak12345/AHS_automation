@@ -15,7 +15,6 @@ public class Review_demographics_Page extends BaseTest {
 
 	@FindBy(xpath = "//h5[normalize-space()='Review Demographics']")
 	WebElement CheckReviewdemograph;
-
 	@FindBy(xpath = "//*[text()='OK']")
 	WebElement ClickonOK;
 
@@ -25,11 +24,10 @@ public class Review_demographics_Page extends BaseTest {
 	@FindBy(xpath = "//*[text()=' Accept ']")
 	WebElement Accpetbtn;
 
-	public Review_demographics_Page(WebDriver driver) throws IOException {
-		this.driver = driver;
+	public Review_demographics_Page() throws IOException {
 		PageFactory.initElements(driver, this);
 	}
-
+	
 	public String FillDemoGraphics() throws IOException, InterruptedException {
 		Helper help = new Helper();
 		CheckReviewdemograph.click();

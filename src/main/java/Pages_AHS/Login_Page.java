@@ -42,8 +42,7 @@ public class Login_Page extends BaseTest {
 	@FindBy(xpath = "//iframe[@name='a-odj8dgex1c4h']")
 	WebElement Captcha;
 
-	public Login_Page(WebDriver driver) throws IOException {
-		this.driver = driver;
+	public Login_Page() throws IOException {
 		PageFactory.initElements(driver, this);
 	}
 
@@ -51,8 +50,6 @@ public class Login_Page extends BaseTest {
 
 		email.sendKeys(emailid);
 		password.sendKeys(pass);
-		// help.Switchframe(Captcha,driver);
-		// Captcha.click();
 		loginbtn.click();
 		otp.sendKeys(otpp);
 		verifybtn.click();
