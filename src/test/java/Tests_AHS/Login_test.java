@@ -28,7 +28,7 @@ public class Login_test extends BaseTest {
 	@BeforeMethod
 	public void excutebefore() throws IOException {
 		init();
-		login = new Login_Page(driver);
+		login = new Login_Page();
 		log.info("Before method");
 	}
 

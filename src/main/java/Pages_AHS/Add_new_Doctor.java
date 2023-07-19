@@ -60,8 +60,7 @@ public class Add_new_Doctor extends BaseTest{
 	List<WebElement> Getphysiciannames;
 	
 
-	public Add_new_Doctor(WebDriver driver) throws IOException{
-		this.driver=driver;
+	public Add_new_Doctor() throws IOException{
 		PageFactory.initElements(driver, this);
 	}
 	

@@ -37,18 +37,14 @@ public class listener implements ITestListener {
 			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
 					.get(result.getInstance());
 		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		File imageFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String failureImageFileName = result.getMethod().getMethodName()
-				+ new SimpleDateFormat("MM-dd-yyyy_HH-ss").format(new GregorianCalendar().getTime()) + ".png";
 		File failureImageFile = new File("./Screenshots/" + result.getName() + ".png");
 		try {
 			FileUtils.copyFile(imageFile, failureImageFile);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

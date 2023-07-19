@@ -28,8 +28,8 @@ public class Add_new_doctor_Test extends BaseTest {
 	@BeforeMethod
 	public void excutebefore() throws IOException {
 		init();
-		newdoctor = new Add_new_Doctor(driver);
-		login = new Login_Page(driver);
+		newdoctor = new Add_new_Doctor();
+		login = new Login_Page();
 	}
 
 	@Test

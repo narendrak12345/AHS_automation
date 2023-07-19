@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -45,12 +46,18 @@ public class BaseTest {
 		if (browser.equals("chrome")) {
 			driver = new ChromeDriver();
 			log.info("Selecting chrome browser");
+			
 		} else if (browser.equals("Firefox")) {
 			driver = new FirefoxDriver();
 			log.info("Selecting Firefox browser");
+			
 		} else if (browser.equals("IE")) {
 			driver = new InternetExplorerDriver();
 			log.info("Selecting IE browser");
+		}
+			else if (browser.equals("edge")) {
+				driver = new EdgeDriver();
+				log.info("Selecting EdgeDriver");
 		}
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();

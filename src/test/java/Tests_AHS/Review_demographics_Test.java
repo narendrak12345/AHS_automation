@@ -30,8 +30,8 @@ public class Review_demographics_Test extends BaseTest {
 	@BeforeMethod
 	public void excutebefore() throws IOException {
 		init();
-		login = new Login_Page(driver);
-		demo = new Review_demographics_Page(driver);
+		login = new Login_Page();
+		demo = new Review_demographics_Page();
 	}
 
 	@Test
