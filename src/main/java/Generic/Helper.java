@@ -41,16 +41,15 @@ public class Helper extends BaseTest {
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));
 		return ele.getText();
 	}
-	
-	public void HandleDropDown(WebElement ele, String text,int i) {
+
+	public void HandleDropDown(WebElement ele, int i) throws InterruptedException {
 
 		Select sc = new Select(ele);
-		if(text!=null) {
-		sc.selectByVisibleText(text);
-		}
-		else {
+		Thread.sleep(2000);
+		List<WebElement> eles = sc.getOptions();
+		log.info(eles.size());
 		sc.selectByIndex(i);
-		}
+		Thread.sleep(2000);
 	}
 
 	public WebElement GetBycommonText(String text) {
