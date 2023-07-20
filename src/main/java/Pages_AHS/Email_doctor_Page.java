@@ -19,11 +19,11 @@ public class Email_doctor_Page extends BaseTest {
 
 	WebElement Emaildoctor;
 
-	@FindBy(xpath = "select[@name='practiceGrp']")
+	@FindBy(xpath = "//select[@name='practiceGrp']")
 
 	WebElement practiceGrp;
 
-	@FindBy(xpath = "select[@name='practice']")
+	@FindBy(xpath = "//select[@name='practice']")
 
 	WebElement practice;
 
@@ -38,7 +38,7 @@ public class Email_doctor_Page extends BaseTest {
 	@FindAll({ @FindBy(xpath = "//*[@class='form-group']//table//tbody/tr[*]/td[1]/input") })
 	List<WebElement> Documents;
 
-	@FindBy(xpath = "select[@name='attachmentDocment']")
+	@FindBy(xpath = "//select[@name='attachmentDocment']")
 
 	WebElement UploadHIPAA;
 
@@ -69,12 +69,12 @@ public class Email_doctor_Page extends BaseTest {
 
 		Helper help = new Helper();
 		help.ClickAndWait(Emaildoctor, driver);
-		help.HandleDropDown(practiceGrp, null, 1);
-		help.HandleDropDown(practice, null, 1);
+		help.HandleDropDown(practiceGrp,1);
+		help.HandleDropDown(practice,1);
 		help.SendTextAndWait(message, "Test");
-		help.HandleDropDown(doctype, null, 2);
-		help.Scrolldropdwon(Documents, 2, driver);
-		help.HandleDropDown(UploadHIPAA, null, 2);
+		help.HandleDropDown(doctype,1);
+		help.Scrolldropdwon1(Documents, 2, driver);
+		help.HandleDropDown(UploadHIPAA,2);
 		help.SendTextAndWait(Physicianemail, email);
 		help.SendTextAndWait(Physicianemailalternate, reenteremail);
 		Sendbtn.click();
