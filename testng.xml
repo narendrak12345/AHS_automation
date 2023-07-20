@@ -10,6 +10,7 @@
 			<class name="Tests_AHS.Login_test" />
 			<class name="Tests_AHS.Add_new_doctor_Test" />
 			<class name="Tests_AHS.Review_demographics_Test" />
+			<class name="Tests_AHS.Email_doctor_Test" />
 		</classes>
 	</test> <!--
 	Test -->
