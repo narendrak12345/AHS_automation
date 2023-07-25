@@ -31,7 +31,6 @@ public class Add_new_doctor_Test extends BaseTest {
 		newdoctor = new Add_new_Doctor();
 		login = new Login_Page();
 	}
-
 	@Test
 	@Description("Selecting Multiple physicians")
 	public void Selectmultipledoctor() throws InterruptedException, IOException {
@@ -59,7 +58,6 @@ public class Add_new_doctor_Test extends BaseTest {
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		newdoctor.ValidateNegativescenario("princeton",6);
 		Thread.sleep(5000);
-		
 	}
 	
 	@Step("Closing the application")

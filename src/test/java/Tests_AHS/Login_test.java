@@ -31,7 +31,6 @@ public class Login_test extends BaseTest {
 		login = new Login_Page();
 		log.info("Before method");
 	}
-
 	@Test(priority = 1, description = "Verify successful login with correct credentials")
 	@Description("Test description:Once successful login check wether review Demographics module available are not")
 	public void Testsuccessfullogin() throws InterruptedException {
@@ -42,7 +41,6 @@ public class Login_test extends BaseTest {
 		Assert.assertEquals(actual, "REVIEW DEMOGRAPHICS");
 		log.info("Successful login");
 	}
-
 	@Test(priority = 2, description = "Verify Unsuccessful login with Incorrect credentials")
 	@Description("Test description:Once Unsuccesful login check wether Invalid username or password is apppears on screen")
 	public void TestUnsuccessfullogin() throws InterruptedException {
@@ -52,7 +50,6 @@ public class Login_test extends BaseTest {
 		log.info(actual);
 		Assert.assertEquals(actual, "Invalid username or password");
 	}
-
 	@Test(priority = 3, description = "Verify That if Wrong otp enter")
 	public void VerifyWrongOtpEnter() throws InterruptedException {
 
@@ -62,7 +59,6 @@ public class Login_test extends BaseTest {
 		log.info(actual);
 		Assert.assertEquals(actual, "Invalid username or password");
 	}
-
 	@Step("Closing the application")
 	@AfterMethod
 	public void teardown() {

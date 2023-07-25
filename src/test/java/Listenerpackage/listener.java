@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,21 +18,25 @@ import org.testng.ITestListener;
 import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 
+import MainBase.BaseTest;
+import jdk.internal.org.jline.utils.Log;
+
 public class listener implements ITestListener {
 
+	public static Logger log = LogManager.getLogger(listener.class);
 	// public WebDriver driver;
 	public void onTestStart(ITestResult result) {
 		System.out.println("***********"+ result.getName()+ " "+ "##started## **************");
-
 	}
-
+	
 	public void onTestSuccess(ITestResult result) {
 		System.out.println("********Test completed successfull*******" + result.getName());
-
 	}
-
+	
 	public void onTestFailure(ITestResult result, WebDriver driver) {
 		System.out.println("Test Failed- " + result.getName());
+		//System.out.println("Test Failed- " + result.getThrowable());
+		log.info("Test Failed at- " + result.getThrowable());
 
 		// WebDriver driver;
 		try {
@@ -50,7 +56,8 @@ public class listener implements ITestListener {
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		System.out.println("Test Skipped- " + result.getName());
+		log.info("Test Skipped- " + result.getName());
+		log.info("Skipped test " +result.getThrowable());
 
 	}
 

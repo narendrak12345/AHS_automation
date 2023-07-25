@@ -119,9 +119,4 @@ public class Add_new_Doctor extends BaseTest{
 		help.ClickOnbtn(4);
 		Thread.sleep(2000);
 	}
-	
-	public void VerifyAddedPhysicians() throws IOException {
-		Helper help=new Helper();
-	}
-	
 }

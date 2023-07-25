@@ -29,7 +29,6 @@ public class BaseTest {
 
 		prop = new Properties();
 		String home = System.getProperty("user.dir");
-		// System.out.println(home);
 		fis = new FileInputStream(home + "\\src\\main\\resources\\Properties\\Testdata.properties");
 		prop.load(fis);
 		fis1 = new FileInputStream(home + "\\src\\main\\resources\\logs\\log4j2.properties");
@@ -41,23 +40,23 @@ public class BaseTest {
 
 		WebDriverManager.chromedriver().setup();
 		String browser = prop.getProperty("browser");
-		log.info("Current browser is " + browser);
+		log.info("Launching browser as " + browser);
 
 		if (browser.equals("chrome")) {
 			driver = new ChromeDriver();
-			log.info("Selecting chrome browser");
+			log.info("Launching chrome browser");
 			
 		} else if (browser.equals("Firefox")) {
 			driver = new FirefoxDriver();
-			log.info("Selecting Firefox browser");
+			log.info("Launching Firefox browser");
 			
 		} else if (browser.equals("IE")) {
 			driver = new InternetExplorerDriver();
-			log.info("Selecting IE browser");
+			log.info("Launching IE browser");
 		}
 			else if (browser.equals("edge")) {
 				driver = new EdgeDriver();
-				log.info("Selecting EdgeDriver");
+				log.info("Launching EdgeDriver");
 		}
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
