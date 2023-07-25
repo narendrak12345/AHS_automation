@@ -32,8 +32,8 @@ public class Review_demographics_Test extends BaseTest {
 		init();
 		login = new Login_Page();
 		demo = new Review_demographics_Page();
-	}
-
+		}
+	
 	@Test
 	@Description("Fields are not updating,simply clicking on Active button")
 	public void Updateexistprofile() throws InterruptedException, IOException {
@@ -42,8 +42,8 @@ public class Review_demographics_Test extends BaseTest {
 		String actual = demo.FillDemoGraphics();
 		log.info(actual);
 		Assert.assertEquals(actual, "REVIEW DEMOGRAPHICS");
-	}
-
+		}
+	
 	@Test
 	@Description("Validating with invalid test data")
 	public void TestwithNegativescenario() throws InterruptedException, IOException {
@@ -58,8 +58,25 @@ public class Review_demographics_Test extends BaseTest {
 		Assert.assertEquals(actual3, "Please Enter zip code.");
 		String actual4 = demo.Verifycellularphone();
 		Assert.assertEquals(actual4, "Cellular Phone must be at least 10 digits long.");
-	}
+		}
+	
+	@Test
+	@Description("Fields are not updating,simply clicking on Active button")
+	public void Updatprofile() throws InterruptedException, IOException {
 
+		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
+		String actual = demo.FillDemoGraphics();
+		log.info(actual);
+		Assert.assertEquals(actual, "REVIEW DEMOGRAPHICS");
+	}
+	@Test
+	@Description("Entering fields inputs and Click on Accpet button")
+	public void TestwithValidTestData() throws InterruptedException, IOException {
+
+		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
+		demo.clickOnDemo();
+		demo.FillData("goovrs","cabf","132941","8413217391");
+	}
 	@Step("Closing the application")
 	@AfterMethod
 	public void teardown() {

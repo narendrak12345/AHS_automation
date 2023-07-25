@@ -1,6 +1,7 @@
 package Pages_AHS;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -50,7 +51,10 @@ public class Login_Page extends BaseTest {
 
 		email.sendKeys(emailid);
 		password.sendKeys(pass);
-		loginbtn.click();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please enter text");
+		sc.hasNext();
+;		loginbtn.click();
 		otp.sendKeys(otpp);
 		verifybtn.click();
 	}

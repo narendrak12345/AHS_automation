@@ -68,7 +68,13 @@ public class Helper extends BaseTest {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", ele);
 		return ele;
 	}
+	
+	public void ClickandWait(WebElement ele) {
 
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
+		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();	
+	}
+	
 	public void SendTextAndWait(WebElement ele, String text) {
 
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele));

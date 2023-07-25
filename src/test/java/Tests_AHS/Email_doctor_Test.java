@@ -3,7 +3,9 @@ package Tests_AHS;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import MainBase.BaseTest;
@@ -14,6 +16,7 @@ import ReadJsonData.Readdata;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
+@Listeners(Listenerpackage.listener.class)
 public class Email_doctor_Test extends BaseTest{
 
 	
@@ -40,5 +43,10 @@ public class Email_doctor_Test extends BaseTest{
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		emaildoct.SendMailByElemrexRegisteredPhysician(data.jsondata("email"),data.jsondata("reenteremail"));
+	}
+	@Step("Closing the application")
+	@AfterMethod
+	public void teardown() {
+		driver.quit();
 	}
 }
