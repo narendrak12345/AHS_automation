@@ -28,6 +28,7 @@ public class Helper extends BaseTest {
 
 	public void ClickAndWait(WebElement ele, WebDriver driver) {
 
+		ele.isDisplayed();
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();
 	}
 
@@ -72,7 +73,8 @@ public class Helper extends BaseTest {
 	public void ClickandWait(WebElement ele) {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();	
+		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele)).click();
+		//new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();	
 	}
 	
 	public void SendTextAndWait(WebElement ele, String text) {
@@ -89,6 +91,10 @@ public class Helper extends BaseTest {
 	public void sendvalues(WebElement ele, String text) {
 
 		ele.sendKeys(text);
+	}
+	public String Gettext(WebElement ele) {
+
+		return ele.getText();
 	}
 
 	public void ClickAndWait(WebElement ele, String text) {
@@ -121,15 +127,17 @@ public class Helper extends BaseTest {
 		Thread.sleep(3000);
 	}
 
-	public void GetList(List<WebElement> alloptions, WebDriver driver) {
+	public int GetList(List<WebElement> alloptions, WebDriver driver) {
 
 		List<WebElement> m = alloptions;
+		int size = 0;
 		for (WebElement text : m) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", text);
 			log.info(text.getText());
-			int size = m.size();
-			log.info("No. of added physicians are " + size);
+			size = m.size();
+			//log.info("No. of added physicians are " + size);
 		}
+		return size;
 	}
 
 	public void Scrolldropdwon1(List<WebElement> alloptions, int j, WebDriver driver) throws InterruptedException {

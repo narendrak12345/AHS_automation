@@ -59,12 +59,17 @@ public class Email_doctor_Page extends BaseTest {
 
 	@FindBy(xpath = "//div[text()='Email sent successfully!']")
 	WebElement alerttext;
+	
+	@FindBy(xpath = "//div[@id='swal2-html-container']")
+	WebElement emailtext;
+	
+	
 
 	public Email_doctor_Page() throws IOException {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void SendMailByElemrexRegisteredPhysician(String email, String reenteremail)
+	public String SendMailByElemrexRegisteredPhysician(String email, String reenteremail)
 			throws IOException, InterruptedException {
 
 		Helper help = new Helper();
@@ -80,16 +85,7 @@ public class Email_doctor_Page extends BaseTest {
 		Sendbtn.click();
 		Thread.sleep(5000);
 		help.ClickAndWait(ClickonOK, driver);
-		validatealerttext();
 		help.ClickAndWait(ClickonOK, driver);
-
+		return help.Gettext(emailtext);
 	}
-
-	public void validatealerttext() throws IOException {
-
-		Helper help = new Helper();
-		String actual = help.ChecklElementAndGettext(alerttext, driver);
-		Assert.assertEquals(actual, "Email sent successfully!");
-	}
-
 }

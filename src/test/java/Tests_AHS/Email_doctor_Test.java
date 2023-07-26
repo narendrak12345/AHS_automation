@@ -3,6 +3,7 @@ package Tests_AHS;
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -42,7 +43,9 @@ public class Email_doctor_Test extends BaseTest{
 	public void SearchbyElemrexRegisteredPhysician() throws InterruptedException, IOException, ParseException {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
-		emaildoct.SendMailByElemrexRegisteredPhysician(data.jsondata("email"),data.jsondata("reenteremail"));
+		String actual=emaildoct.SendMailByElemrexRegisteredPhysician(data.jsondata("email"),data.jsondata("reenteremail"));
+		log.info("Text value is >>>> " +actual);
+		Assert.assertEquals(actual,"Email sent successfully!");
 	}
 	@Step("Closing the application")
 	@AfterMethod
