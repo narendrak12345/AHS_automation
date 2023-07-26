@@ -22,6 +22,7 @@ public class Review_demographics_Test extends BaseTest {
 
 	public Login_Page login;
 	public Review_demographics_Page demo;
+	public Login_test logintest;
 
 	public Review_demographics_Test() throws IOException {
 		super();
@@ -32,6 +33,7 @@ public class Review_demographics_Test extends BaseTest {
 		init();
 		login = new Login_Page();
 		demo = new Review_demographics_Page();
+		logintest=new Login_test();
 		}
 	
 	@Test
@@ -48,6 +50,7 @@ public class Review_demographics_Test extends BaseTest {
 	@Description("Validating with invalid test data")
 	public void TestwithNegativescenario() throws InterruptedException, IOException {
 
+		
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		demo.clickOnDemo();
 		String actual1 = demo.Verifstreet();
@@ -75,7 +78,7 @@ public class Review_demographics_Test extends BaseTest {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		demo.clickOnDemo();
-		demo.FillData("goovrs","cabf","132941","8413217391");
+		demo.FillData("gooer","cable","132934","8413217300");
 	}
 	@Step("Closing the application")
 	@AfterMethod
