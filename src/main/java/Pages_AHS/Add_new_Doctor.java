@@ -92,12 +92,12 @@ public class Add_new_Doctor extends BaseTest{
 		Thread.sleep(5000);
 		help.ClickAndWait(ClickonOK, driver);
 	}
-	public void GetalllistofPysiciannames() throws IOException, InterruptedException {
+	public int GetalllistofPysiciannames() throws IOException, InterruptedException {
 		
 		Helper help=new Helper();
 		Clickonyourdoctorlist.click();
 		Thread.sleep(5000);
-		help.GetList(Getphysiciannames, driver);
+		return help.GetList(Getphysiciannames, driver);
 	}
 	public void ValidateNegativescenario(String search,int k) throws IOException, InterruptedException {
 		Helper help=new Helper();

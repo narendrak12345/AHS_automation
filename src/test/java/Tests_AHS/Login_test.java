@@ -46,9 +46,10 @@ public class Login_test extends BaseTest {
 	public void TestUnsuccessfullogin() throws InterruptedException {
 
 		login.checkloginIncorrectcrdentials(prop.getProperty("Incorrectemail"), prop.getProperty("Incorrectpassword"));
-		String actual = login.VerifyInvalidcredentials();
+		String actual=login.alert();
+		login.accpetalert();
 		log.info(actual);
-		Assert.assertEquals(actual, "Invalid username or password");
+		Assert.assertEquals(actual, "The email is not valid");
 	}
 	@Test(priority = 3, description = "Verify That if Wrong otp enter")
 	public void VerifyWrongOtpEnter() throws InterruptedException {

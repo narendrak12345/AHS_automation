@@ -78,7 +78,8 @@ public class Review_demographics_Test extends BaseTest {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		demo.clickOnDemo();
-		demo.FillData("gooer","cable","132934","8413217300");
+		demo.FillData("carrier 1","cable","234323","5342614273");
+		
 	}
 	@Step("Closing the application")
 	@AfterMethod

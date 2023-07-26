@@ -37,9 +37,11 @@ public class Add_new_doctor_Test extends BaseTest {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		newdoctor.SelectDoctor("princeton", 10);
-		newdoctor.choosephysicians(7);// here selcting no. of doctors are 7
-		newdoctor.GetalllistofPysiciannames();
-	}
+		newdoctor.choosephysicians(3);// here selcting no. of doctors are 7
+		int size=newdoctor.GetalllistofPysiciannames();
+		log.info("List of physicians selected " +size);
+		Assert.assertEquals(size,3);
+		}
 
 	@Test
 	@Description("Selecing single physician")
@@ -48,7 +50,9 @@ public class Add_new_doctor_Test extends BaseTest {
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		newdoctor.SelectDoctor("princeton", 2);
 		newdoctor.choosephysicians(1);// here selcting no. of doctors are 1
-		newdoctor.GetalllistofPysiciannames();
+		int size=newdoctor.GetalllistofPysiciannames();
+		log.info("List of physicians selected " +size);
+		Assert.assertEquals(size,1);
 	}
 	
 	@Test

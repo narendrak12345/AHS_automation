@@ -134,18 +134,19 @@ public class Review_demographics_Page extends BaseTest {
 		WebElement e4 = help.GetBycommonText("cellPhone");
 		e4.clear();
 		e4.sendKeys(cell);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		help.ClickAndWait(Accpetbtn, driver);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		help.ClickAndWait(ClickonOK, driver);
-		Thread.sleep(3000);
-		SelectAllcheckbox.click();
+	    Thread.sleep(5000);
+		help.ClickAndWait(SelectAllcheckbox, driver);
+		//SelectAllcheckbox.click();
 		SelectAllcheckbox.isSelected();
 		help.ClickAndWait(ClickonOK, driver);
 		help.ClickAndWait(Iselctbtn, driver);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		help.ClickAndWait(ClickonOK, driver);
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
         Action action = new Actions(driver).click(esign)
                 .moveToElement(esign, 3, 3).clickAndHold(esign)
                 .moveByOffset(50, 50).moveByOffset(-50, 50)
@@ -153,12 +154,12 @@ public class Review_demographics_Page extends BaseTest {
                 .moveByOffset(30,-130)
                 .build();
         action.perform();
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         help.ClickAndWait(clickondone, driver);
         help.ClickAndWait(ClickonOK, driver);
-        Thread.sleep(8000);
+        Thread.sleep(10000);
         help.ClickandWait(clicksubmit);
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         help.ClickAndWait(ClickonOK, driver);
         Thread.sleep(5000);
 	}
