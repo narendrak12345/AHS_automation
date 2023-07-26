@@ -51,10 +51,7 @@ public class Login_Page extends BaseTest {
 
 		email.sendKeys(emailid);
 		password.sendKeys(pass);
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Please enter text");
-		sc.hasNext();
-;		loginbtn.click();
+		loginbtn.click();
 		otp.sendKeys(otpp);
 		verifybtn.click();
 	}
