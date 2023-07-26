@@ -3,6 +3,7 @@ package Pages_AHS;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -62,9 +63,20 @@ public class Login_Page extends BaseTest {
 		password.sendKeys(pass);
 		loginbtn.click();
 	}
-
+	public String alert() throws InterruptedException {
+		
+		Alert alert = driver.switchTo().alert();
+		Thread.sleep(4000);
+		//alert.accept();
+		return alert.getText();
+	}
+public void accpetalert() throws InterruptedException {
+		
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+	}
 	public String verify() {
-
+		
 		return help.ChecklElementAndGettext(CheckReviewdemograph, driver);
 	}
 
