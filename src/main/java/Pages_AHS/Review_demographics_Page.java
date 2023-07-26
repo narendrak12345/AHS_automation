@@ -138,7 +138,7 @@ public class Review_demographics_Page extends BaseTest {
 		help.ClickAndWait(Accpetbtn, driver);
 		//Thread.sleep(3000);
 		help.ClickAndWait(ClickonOK, driver);
-		//Thread.sleep(3000);
+	    Thread.sleep(5000);
 		help.ClickAndWait(SelectAllcheckbox, driver);
 		//SelectAllcheckbox.click();
 		SelectAllcheckbox.isSelected();
