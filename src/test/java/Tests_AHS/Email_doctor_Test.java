@@ -18,13 +18,12 @@ import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
 @Listeners(Listenerpackage.listener.class)
-public class Email_doctor_Test extends BaseTest{
+public class Email_doctor_Test extends BaseTest {
 
-	
 	public Login_Page login;
 	public Email_doctor_Page emaildoct;
 	public Readdata data;
-	
+
 	public Email_doctor_Test() throws IOException {
 		super();
 	}
@@ -35,7 +34,7 @@ public class Email_doctor_Test extends BaseTest{
 		init();
 		emaildoct = new Email_doctor_Page();
 		login = new Login_Page();
-		data=new Readdata();
+		data = new Readdata();
 	}
 
 	@Test
@@ -43,10 +42,36 @@ public class Email_doctor_Test extends BaseTest{
 	public void SearchbyElemrexRegisteredPhysician() throws InterruptedException, IOException, ParseException {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
-		String actual=emaildoct.SendMailByElemrexRegisteredPhysician(data.jsondata("email"),data.jsondata("reenteremail"));
-		log.info("Text value is >>>> " +actual);
-		Assert.assertEquals(actual,"Email sent successfully!");
+		String actual = emaildoct.SendMailByElemrexRegisteredPhysician(data.jsondata("email"),
+				data.jsondata("reenteremail"));
+		log.info("Text value is >>>> " + actual);
+		Assert.assertEquals(actual, "Email sent successfully!");
 	}
+
+	@Test
+	@Description("Search By NPI Database using Search by NPI number")
+	public void SearchByNPIUsingNPINumber() throws InterruptedException, IOException, ParseException {
+
+		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
+		emaildoct.SendemailbyNpidatabase();
+		String actual = emaildoct.SearchbyNPI(data.jsondata("NPINumber"), data.jsondata("email"),
+				data.jsondata("reenteremail"));
+		log.info("Text value is >>>> " + actual);
+		Assert.assertEquals(actual, "Email sent successfully!");
+	}
+
+	@Test
+	@Description("Search By NPI Database using Search by First Name, Last Name and State")
+	public void SearchByNPI() throws InterruptedException, IOException, ParseException {
+
+		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
+		emaildoct.SendemailbyNpidatabase();
+		String actual = emaildoct.SearchbyFirstLastState(data.jsondata("firstname"), data.jsondata("lastname"),
+				data.jsondata("state"), data.jsondata("email"), data.jsondata("reenteremail"));
+		log.info("Text value is >>>> " + actual);
+		Assert.assertEquals(actual, "Email sent successfully!");
+	}
+
 	@Step("Closing the application")
 	@AfterMethod
 	public void teardown() {
