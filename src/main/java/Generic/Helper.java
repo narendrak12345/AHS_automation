@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -52,10 +53,24 @@ public class Helper extends BaseTest {
 		sc.selectByIndex(i);
 		Thread.sleep(2000);
 	}
+	public void HandleDropDownByText(WebElement ele,String text) throws InterruptedException {
+
+		Select sc = new Select(ele);
+		Thread.sleep(2000);
+		List<WebElement> eles = sc.getOptions();
+		log.info(eles.size());
+		sc.selectByVisibleText(text);
+		Thread.sleep(2000);
+	}
 
 	public WebElement GetBycommonText(String text) {
 
 		return driver.findElement(By.xpath("//input[@name='" + text + "']"));
+	}
+	
+	public void SendtextAndClick(String text) {
+
+		driver.findElement(By.xpath("//*[text()='"+text+"']")).click();
 	}
 
 	public void WaitForSomeTime(int i) throws InterruptedException {
@@ -73,8 +88,8 @@ public class Helper extends BaseTest {
 	public void ClickandWait(WebElement ele) {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele);
-		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele)).click();
-		//new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();	
+		//new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.visibilityOf(ele)).click();
+		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();	
 	}
 	
 	public void SendTextAndWait(WebElement ele, String text) {
@@ -86,6 +101,13 @@ public class Helper extends BaseTest {
 	public void Switchframe(WebElement ele, WebDriver driver) throws InterruptedException {
 		Thread.sleep(5000);
 		driver.switchTo().frame(ele);
+	}
+	
+	public void alert(WebElement ele, WebDriver driver) throws InterruptedException {
+		
+		Alert alert = driver.switchTo().alert();
+		//alert.getText();
+		alert.accept();
 	}
 
 	public void sendvalues(WebElement ele, String text) {

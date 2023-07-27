@@ -59,11 +59,27 @@ public class Email_doctor_Page extends BaseTest {
 
 	@FindBy(xpath = "//div[text()='Email sent successfully!']")
 	WebElement alerttext;
-	
+
 	@FindBy(xpath = "//div[@id='swal2-html-container']")
 	WebElement emailtext;
-	
-	
+
+	@FindBy(xpath = "(//*[@type='radio'])[2]")
+	WebElement ClickNPIDatabase;
+
+	@FindBy(xpath = "(//*[@class='col-sm-4']/input)[1]")
+	WebElement Firstname;
+
+	@FindBy(xpath = "(//*[@class='col-sm-4']/input)[2]")
+	WebElement Lastname;
+
+	@FindBy(xpath = "(//*[@class='col-sm-4']/input)[3]")
+	WebElement NPI;
+
+	@FindBy(xpath = "//*[@name='physicianSearchState']")
+	WebElement state;
+
+	@FindBy(xpath = "//*[contains(@id,'DataTables_Table_')]/tbody/tr/td[8]/a")
+	WebElement chooseselect;
 
 	public Email_doctor_Page() throws IOException {
 		PageFactory.initElements(driver, this);
@@ -74,12 +90,64 @@ public class Email_doctor_Page extends BaseTest {
 
 		Helper help = new Helper();
 		help.ClickAndWait(Emaildoctor, driver);
-		help.HandleDropDown(practiceGrp,1);
-		help.HandleDropDown(practice,1);
+		help.HandleDropDown(practiceGrp, 1);
+		help.HandleDropDown(practice, 1);
 		help.SendTextAndWait(message, "Test");
-		help.HandleDropDown(doctype,1);
+		help.HandleDropDown(doctype, 1);
 		help.Scrolldropdwon1(Documents, 2, driver);
-		help.HandleDropDown(UploadHIPAA,2);
+		help.HandleDropDown(UploadHIPAA, 2);
+		help.SendTextAndWait(Physicianemail, email);
+		help.SendTextAndWait(Physicianemailalternate, reenteremail);
+		Sendbtn.click();
+		Thread.sleep(5000);
+		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK, driver);
+		return help.Gettext(emailtext);
+	}
+
+	public void SendemailbyNpidatabase() throws IOException {
+
+		Helper help = new Helper();
+		help.ClickAndWait(Emaildoctor, driver);
+		ClickNPIDatabase.isDisplayed();
+		ClickNPIDatabase.click();
+		help.SendtextAndClick("Search Physicians");
+
+	}
+
+	public String SearchbyFirstLastState(String firstname, String lastname, String statename, String email,
+			String reenteremail) throws IOException, InterruptedException {
+
+		Helper help = new Helper();
+		help.SendTextAndWait(Firstname, firstname);
+		help.SendTextAndWait(Lastname, lastname);
+		help.HandleDropDownByText(state, statename);
+		help.SendtextAndClick(" Search Physicians ");
+		help.ClickandWait(chooseselect);
+		help.SendTextAndWait(message, "Test");
+		help.HandleDropDown(doctype, 1);
+		help.Scrolldropdwon1(Documents, 2, driver);
+		help.HandleDropDown(UploadHIPAA, 2);
+		help.SendTextAndWait(Physicianemail, email);
+		help.SendTextAndWait(Physicianemailalternate, reenteremail);
+		Sendbtn.click();
+		Thread.sleep(5000);
+		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK, driver);
+		return help.Gettext(emailtext);
+	}
+
+	public String SearchbyNPI(String NPIID, String email, String reenteremail)
+			throws IOException, InterruptedException {
+
+		Helper help = new Helper();
+		help.SendTextAndWait(NPI, NPIID);
+		help.SendtextAndClick(" Search Physicians ");
+		help.ClickandWait(chooseselect);
+		help.SendTextAndWait(message, "Test");
+		help.HandleDropDown(doctype, 1);
+		help.Scrolldropdwon1(Documents, 2, driver);
+		help.HandleDropDown(UploadHIPAA, 2);
 		help.SendTextAndWait(Physicianemail, email);
 		help.SendTextAndWait(Physicianemailalternate, reenteremail);
 		Sendbtn.click();
