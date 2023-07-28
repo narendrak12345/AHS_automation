@@ -60,7 +60,7 @@ public class Review_demographics_Test extends BaseTest {
 		String actual3 = demo.Verifyzip();
 		Assert.assertEquals(actual3, "Please Enter zip code.");
 		String actual4 = demo.Verifycellularphone();
-		Assert.assertEquals(actual4, "Cellular Phone must be at least 10 digits long.");
+		Assert.assertEquals(actual4, "Please Enter Cellular Phone.");
 		}
 	
 	@Test
@@ -78,8 +78,7 @@ public class Review_demographics_Test extends BaseTest {
 
 		login.checklogin(prop.getProperty("email"), prop.getProperty("password"), prop.getProperty("otp"));
 		demo.clickOnDemo();
-		demo.FillData("carrier 1","cable","234323","5342614273");
-		
+		demo.FillData("all 1","cables","234323","6142315231");
 	}
 	@Step("Closing the application")
 	@AfterMethod
