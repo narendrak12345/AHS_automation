@@ -115,7 +115,7 @@ public class Review_demographics_Page extends BaseTest {
 		ele.sendKeys(Keys.DELETE);
 		Thread.sleep(2000);
 		help.ClickAndWait(Accpetbtn, driver);
-		WebElement text = help.GettextByCommontext(" Cellular Phone must be at least 10 digits long. ");
+		WebElement text = help.GettextByCommontext(" Please Enter Cellular Phone. ");
 		return text.getText();
 	}
 	
