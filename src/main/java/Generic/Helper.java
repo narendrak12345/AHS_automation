@@ -27,7 +27,7 @@ public class Helper extends BaseTest {
 
 	// Common methods
 
-	public void ClickAndWait(WebElement ele, WebDriver driver) {
+	public void ClickAndWait(WebElement ele) {
 
 		ele.isDisplayed();
 		new WebDriverWait(driver, Duration.ofSeconds(20)).until(ExpectedConditions.elementToBeClickable(ele)).click();
