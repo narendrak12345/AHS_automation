@@ -18,6 +18,8 @@ public class Add_new_Doctor extends BaseTest{
 
 	
 
+	public static Helper help;
+	
 	@FindBy(xpath="//h5[normalize-space()='Add New Physician to your list']")
 	
 	WebElement Addnewpysician;
@@ -62,45 +64,43 @@ public class Add_new_Doctor extends BaseTest{
 
 	public Add_new_Doctor() throws IOException{
 		PageFactory.initElements(driver, this);
+		help=new Helper();
 	}
 	
 	public void SelectDoctor(String search,int k) throws InterruptedException, IOException {
 		
-		Helper help=new Helper();
-		help.ClickAndWait(Addnewpysician,driver);
+		help.ClickAndWait(Addnewpysician);
 		Searchdoctor.sendKeys(search);
 		Clickonsearch.click();
 		Thread.sleep(2000);
 		help.ClickOnbtn(5);
 		help.ClickOnbtn(4);
 		Clickonsave.click();
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
 		Thread.sleep(2000);
 		help.Scrolldropdwon(Alloptions,k,driver);
 	}	
 	public void choosephysicians(int k) throws InterruptedException, IOException {
 		
-		Helper help=new Helper();
 		choosepysicianbtn.isEnabled();
 		help.Scrolldropdwon1(choosephysician,k,driver);
 		choosepysicianbtn.click();
 		Clickonsave.click();
-		help.ClickAndWait(ClickonOK, driver);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
+		help.ClickAndWait(ClickonOK);
 		Thread.sleep(5000);
 		ClickonHomepage.click();
 		Thread.sleep(5000);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
 	}
 	public int GetalllistofPysiciannames() throws IOException, InterruptedException {
 		
-		Helper help=new Helper();
 		Clickonyourdoctorlist.click();
 		Thread.sleep(5000);
 		return help.GetList(Getphysiciannames, driver);
 	}
 	public void ValidateNegativescenario(String search,int k) throws IOException, InterruptedException {
-		Helper help=new Helper();
+
 		SelectDoctor(search,k);
 		choosepysicianbtn.click();
 		help.ClickOnbtn(2);//select all
