@@ -59,6 +59,8 @@ public class Helper extends BaseTest {
 		Thread.sleep(2000);
 		List<WebElement> eles = sc.getOptions();
 		log.info(eles.size());
+		
+		log.info("All states " +ele.getText());
 		sc.selectByVisibleText(text);
 		Thread.sleep(2000);
 	}

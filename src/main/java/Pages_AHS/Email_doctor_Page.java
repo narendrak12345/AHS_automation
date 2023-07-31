@@ -15,6 +15,9 @@ import junit.framework.Assert;
 
 public class Email_doctor_Page extends BaseTest {
 
+	
+	public static Helper help;
+	
 	@FindBy(xpath = "//h5[normalize-space()='Email Doctors']")
 
 	WebElement Emaildoctor;
@@ -83,13 +86,13 @@ public class Email_doctor_Page extends BaseTest {
 
 	public Email_doctor_Page() throws IOException {
 		PageFactory.initElements(driver, this);
+		help=new Helper();
 	}
 
 	public String SendMailByElemrexRegisteredPhysician(String email, String reenteremail)
 			throws IOException, InterruptedException {
 
-		Helper help = new Helper();
-		help.ClickAndWait(Emaildoctor, driver);
+		help.ClickAndWait(Emaildoctor);
 		help.HandleDropDown(practiceGrp, 1);
 		help.HandleDropDown(practice, 1);
 		help.SendTextAndWait(message, "Test");
@@ -100,15 +103,14 @@ public class Email_doctor_Page extends BaseTest {
 		help.SendTextAndWait(Physicianemailalternate, reenteremail);
 		Sendbtn.click();
 		Thread.sleep(5000);
-		help.ClickAndWait(ClickonOK, driver);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
+		help.ClickAndWait(ClickonOK);
 		return help.Gettext(emailtext);
 	}
 
 	public void SendemailbyNpidatabase() throws IOException {
 
-		Helper help = new Helper();
-		help.ClickAndWait(Emaildoctor, driver);
+		help.ClickAndWait(Emaildoctor);
 		ClickNPIDatabase.isDisplayed();
 		ClickNPIDatabase.click();
 		help.SendtextAndClick("Search Physicians");
@@ -118,7 +120,6 @@ public class Email_doctor_Page extends BaseTest {
 	public String SearchbyFirstLastState(String firstname, String lastname, String statename, String email,
 			String reenteremail) throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		help.SendTextAndWait(Firstname, firstname);
 		help.SendTextAndWait(Lastname, lastname);
 		help.HandleDropDownByText(state, statename);
@@ -132,15 +133,14 @@ public class Email_doctor_Page extends BaseTest {
 		help.SendTextAndWait(Physicianemailalternate, reenteremail);
 		Sendbtn.click();
 		Thread.sleep(5000);
-		help.ClickAndWait(ClickonOK, driver);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
+		help.ClickAndWait(ClickonOK);
 		return help.Gettext(emailtext);
 	}
 
 	public String SearchbyNPI(String NPIID, String email, String reenteremail)
 			throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		help.SendTextAndWait(NPI, NPIID);
 		help.SendtextAndClick(" Search Physicians ");
 		help.ClickandWait(chooseselect);
@@ -152,8 +152,8 @@ public class Email_doctor_Page extends BaseTest {
 		help.SendTextAndWait(Physicianemailalternate, reenteremail);
 		Sendbtn.click();
 		Thread.sleep(5000);
-		help.ClickAndWait(ClickonOK, driver);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
+		help.ClickAndWait(ClickonOK);
 		return help.Gettext(emailtext);
 	}
 }

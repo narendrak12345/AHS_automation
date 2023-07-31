@@ -15,6 +15,8 @@ import Generic.Helper;
 import MainBase.BaseTest;
 
 public class Review_demographics_Page extends BaseTest {
+	
+	public static Helper help;
 
 	@FindBy(xpath = "//h5[normalize-space()='Review Demographics']")
 	WebElement CheckReviewdemograph;
@@ -47,29 +49,30 @@ public class Review_demographics_Page extends BaseTest {
 
 	public Review_demographics_Page() throws IOException {
 		PageFactory.initElements(driver, this);
+		help = new Helper();
 	}
 	
 	public String FillDemoGraphics() throws IOException, InterruptedException {
-		Helper help = new Helper();
+		
 		CheckReviewdemograph.click();
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(CheckReviewdemograph);
+		help.ClickAndWait(ClickonOK);
 		Thread.sleep(2000);
 		log.info(help.ChecklElementAndGettext(Textonscreen, driver));
-		help.ClickAndWait(Accpetbtn, driver);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(Accpetbtn);
+		help.ClickAndWait(ClickonOK);
 		return CheckReviewdemograph.getText();
 	}
 
 	public String Verifstreet() throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		WebElement ele = help.GetBycommonText("street");
 		Thread.sleep(2000);
 		ele.click();
 		ele.sendKeys(Keys.CONTROL + "a");
 		ele.sendKeys(Keys.DELETE);
 		Thread.sleep(2000);
-		help.ClickAndWait(Accpetbtn, driver);
+		help.ClickAndWait(Accpetbtn);
 		Thread.sleep(5000);
 		WebElement text = help.GettextByCommontext(" Please Enter Street Address. ");
 		return text.getText();
@@ -78,35 +81,32 @@ public class Review_demographics_Page extends BaseTest {
 
 	public String Verifcity() throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		WebElement ele = help.GetBycommonText("city");
 		Thread.sleep(3000);
 		ele.click();
 		ele.sendKeys(Keys.CONTROL + "a");
 		ele.sendKeys(Keys.DELETE);
 		Thread.sleep(4000);
-		help.ClickAndWait(Accpetbtn, driver);
+		help.ClickAndWait(Accpetbtn);
 		WebElement text = help.GettextByCommontext(" Please Enter City. ");
 		return text.getText();
 	}
 
 	public String Verifyzip() throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		WebElement ele = help.GetBycommonText("zip");
 		Thread.sleep(2000);
 		ele.click();
 		ele.sendKeys(Keys.CONTROL + "a");
 		ele.sendKeys(Keys.DELETE);
 		Thread.sleep(2000);
-		help.ClickAndWait(Accpetbtn, driver);
+		help.ClickAndWait(Accpetbtn);
 		WebElement text = help.GettextByCommontext(" Please Enter zip code. ");
 		return text.getText();
 	}
 
 	public String Verifycellularphone() throws IOException, InterruptedException {
 
-		Helper help = new Helper();
 		WebElement ele = help.GetBycommonText("cellPhone");
 		Thread.sleep(2000);
 		ele.sendKeys(Keys.CONTROL + "a");
@@ -114,14 +114,13 @@ public class Review_demographics_Page extends BaseTest {
 		ele.sendKeys(Keys.CONTROL + "a");
 		ele.sendKeys(Keys.DELETE);
 		Thread.sleep(2000);
-		help.ClickAndWait(Accpetbtn, driver);
+		help.ClickAndWait(Accpetbtn);
 		WebElement text = help.GettextByCommontext(" Please Enter Cellular Phone. ");
 		return text.getText();
 	}
 	
 	public void FillData(String street,String city,String zip,String cell) throws IOException, InterruptedException {
 		
-		Helper help = new Helper();
 		WebElement e1 = help.GetBycommonText("street");
 		e1.clear();
 		e1.sendKeys(street);
@@ -135,17 +134,17 @@ public class Review_demographics_Page extends BaseTest {
 		e4.clear();
 		e4.sendKeys(cell);
 		//Thread.sleep(3000);
-		help.ClickAndWait(Accpetbtn, driver);
+		help.ClickAndWait(Accpetbtn);
 		//Thread.sleep(3000);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
 	    Thread.sleep(5000);
-		help.ClickAndWait(SelectAllcheckbox, driver);
+		help.ClickAndWait(SelectAllcheckbox);
 		//SelectAllcheckbox.click();
 		SelectAllcheckbox.isSelected();
-		help.ClickAndWait(ClickonOK, driver);
-		help.ClickAndWait(Iselctbtn, driver);
+		help.ClickAndWait(ClickonOK);
+		help.ClickAndWait(Iselctbtn);
 		//Thread.sleep(3000);
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
 		//Thread.sleep(3000);
         Action action = new Actions(driver).click(esign)
                 .moveToElement(esign, 3, 3).clickAndHold(esign)
@@ -155,17 +154,16 @@ public class Review_demographics_Page extends BaseTest {
                 .build();
         action.perform();
         //Thread.sleep(5000);
-        help.ClickAndWait(clickondone, driver);
-        help.ClickAndWait(ClickonOK, driver);
+        help.ClickAndWait(clickondone);
+        help.ClickAndWait(ClickonOK);
         Thread.sleep(10000);
         help.ClickandWait(clicksubmit);
         //Thread.sleep(5000);
-        help.ClickAndWait(ClickonOK, driver);
+        help.ClickAndWait(ClickonOK);
         Thread.sleep(5000);
 	}
 	public void clickOnDemo() throws IOException {
-		Helper help = new Helper();
 		CheckReviewdemograph.click();
-		help.ClickAndWait(ClickonOK, driver);
+		help.ClickAndWait(ClickonOK);
 	}
 }

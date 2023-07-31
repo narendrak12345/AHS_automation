@@ -14,7 +14,8 @@ import MainBase.BaseTest;
 
 public class Login_Page extends BaseTest {
 
-	Helper help = new Helper();
+	public static Helper help;
+	
 	@FindBy(xpath = "//input[@id='email']")
 
 	WebElement email;
@@ -46,6 +47,7 @@ public class Login_Page extends BaseTest {
 
 	public Login_Page() throws IOException {
 		PageFactory.initElements(driver, this);
+		help = new Helper();
 	}
 
 	public void checklogin(String emailid, String pass, String otpp) throws InterruptedException {
